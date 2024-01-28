@@ -25,6 +25,15 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await User.find({}).select({ username: 1, _id: 1 });
+    res.json(users);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 
 app.post('/api/users', async (req, res) => {
   try {
