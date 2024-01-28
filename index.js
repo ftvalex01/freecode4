@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 require('dotenv').config()
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true }
 });
